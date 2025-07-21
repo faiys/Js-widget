@@ -24,8 +24,82 @@
     <script src="https://js.zohostatic.com/creator/widgets/version/1.0/widgetsdk-min.js"></script>
   </head>
   <body>
-    <h2>Customer Report</h2>
     <div id="table-container"></div>
+    <!-- Search and Nav -->
+    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand fs-4">Customer Report</a>
+      <i
+        class="bi bi-search fs-5"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasRight"
+        aria-controls="offcanvasRight"
+        id="showSearchNav"
+      ></i>
+      <div
+        class="offcanvas offcanvas-end"
+        tabindex="-1"
+        id="offcanvasRight"
+        aria-labelledby="offcanvasRightLabel"
+      >
+        <div class="offcanvas-header">
+          <h5 id="offcanvasRightLabel">Search</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="offcanvas-body">
+          <form role="search" onsubmit="searchAPI(event)">
+            <p>Company Name</p>
+            <div class="dropdown">
+              <button
+                class="btn dropdown-toggle border border-info rounded"
+                type="button"
+                id="filterDropdown"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                style="min-width: 12rem; margin-bottom: 8px"
+              >
+                Is
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="filterDropdown">
+                <li>
+                  <a class="dropdown-item" href="#" onclick="selectFilter('is')"
+                    >Is</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    onclick="selectFilter('contains')"
+                    >Contains</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <input
+              type="name"
+              id="companyID"
+              class="border border-info rounded"
+              style="min-width: 20rem; min-height: 35px"
+            />
+            <footer style="margin-left: 10rem">
+              <button
+                class="btn btn-primary m-2"
+                type="submit"
+                style="bottom: 0; position: absolute"
+              >
+                Search
+              </button>
+            </footer>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <!-- Render Data to Table -->
     <div id="table-containerCust"></div>
     <script src="func.js"></script>
     <script src="index.js"></script>

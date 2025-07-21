@@ -13,7 +13,7 @@
 //     console.error("Zoho SDK initianilization failed",error)
 // })
 const appName = "passive-foreign-investment-company-pfic";
-async function fetchRecords(appname, reportname ) {
+async function fetchRecords(appname, reportname, type ) {
   try {
     await ZOHO.CREATOR.init();
     const config = {
@@ -22,8 +22,8 @@ async function fetchRecords(appname, reportname ) {
     };
     const response = await ZOHO.CREATOR.API.getAllRecords(config);
     const data = response.data;
-    console.log(data)
-    if(reportname == "All_Companies")
+     console.log(data)
+    if(reportname == "All_Companies" && type == "renderTable")
     {
       renderTableCustom(data)
     }
@@ -33,4 +33,4 @@ async function fetchRecords(appname, reportname ) {
     return error
   }
 }
-fetchRecords(appName,"All_Companies");    
+fetchRecords(appName,"All_Companies", "renderTable");    
